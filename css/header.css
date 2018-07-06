@@ -20,9 +20,6 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 }
-
-
-
 header {
     box-sizing: border-box;
     min-height: 100vh;
@@ -33,14 +30,8 @@ header {
 }
 
 header h5 {
-    margin-top: -25%;
+    margin-top: -15%;
 }
-
-header,
-header:before {
-    background: 50% 50% / cover;
-}
-
 header::before {
     bottom: 0;
     content: "";
@@ -49,7 +40,6 @@ header::before {
     right: 0;
     top: 0;
     display: block;
-    background-color: rgba(38, 198, 218, 0.49);
     background-image: url('../image/background.jpg');
     background-size: cover;
     transform-origin: center center 0;
