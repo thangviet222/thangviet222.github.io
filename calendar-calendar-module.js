@@ -76,7 +76,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: '',
+    {
+        path: '',
         component: _calendar_app_component__WEBPACK_IMPORTED_MODULE_2__["CalendarAppComponent"],
         children: [
             { path: '', loadChildren: './components/main-content/main-content.module#MainContentModule' }
@@ -96,7 +97,11 @@ var CalendarModule = /** @class */ (function () {
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_5__["FlexLayoutModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forChild(routes)
             ],
-            declarations: [_calendar_app_component__WEBPACK_IMPORTED_MODULE_2__["CalendarAppComponent"], _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_7__["SideNavComponent"], _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_8__["ToolbarComponent"]],
+            declarations: [
+                _calendar_app_component__WEBPACK_IMPORTED_MODULE_2__["CalendarAppComponent"],
+                _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_7__["SideNavComponent"],
+                _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_8__["ToolbarComponent"],
+            ],
         })
     ], CalendarModule);
     return CalendarModule;
@@ -113,7 +118,7 @@ var CalendarModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".app-sidenav-container{\n    flex: 1;\n    width: 100%;\n    min-width: 100%;\n    height: 100%;\n    min-height: 100%;\n    position: fixed;\n}\n.app-sidenav-content{\n    display: flex;\n    height: 100%;\n   flex-direction: column;\n}\n.app-sidenav{\n  width: 240px;\n}\n.wrapper{\n    margin: 50px;\n}\n.font-custom{\n    font-weight: 400;\n    font-size: 24px;\n    line-height: 32px; \n }"
+module.exports = ".app-sidenav-container{\n    position: absolute;\n    flex: 1;\n    width: 100%;\n    min-width: 100%;\n    height: 100%;\n    min-height: 100%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n}\n.app-sidenav-content{\n    display: flex;\n    height: 100%;\n    flex-direction: column;\n}\n.app-sidenav{\n  width: 240px;\n}\n.wrapper{\n    margin: 50px;\n}\n.font-custom{\n    font-weight: 500;\n    font-size: 24px;\n    line-height: 100%; \n    color:white;\n }\nmat-toolbar{\n    background-color:lightseagreen;\n }"
 
 /***/ }),
 
@@ -124,7 +129,7 @@ module.exports = ".app-sidenav-container{\n    flex: 1;\n    width: 100%;\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"app-sidenav-container\">\n  <mat-sidenav #sidenav class=\"app-sidenav mat-elevation-z2\" [opened]=\"!isScreenSmall()\" [mode]=\"isScreenSmall()? 'over':'side'\">\n    <mat-toolbar color=\"primary\" class=\"font-custom\">\n      Menu\n    </mat-toolbar>\n    <mat-nav-list>\n      <mat-list-item>\n        <mat-icon>calendar_view_day</mat-icon>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'year']\">Year</a>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'month']\">\n          Month\n        </a>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'day']\">Day</a>\n      </mat-list-item>\n      <mat-list-item>\n          <a mat-line [routerLink]=\"['/calendar', 'allEvents']\">View All</a>\n      </mat-list-item>\n      <mat-list-item>\n        <mat-icon>event</mat-icon>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'addevent']\">Add Event</a>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'applyleave']\">Apply Leave</a>\n      </mat-list-item>\n    </mat-nav-list>\n  </mat-sidenav>\n  <div class=\"app-sidenav-content\">\n    <app-toolbar (toggleSidenav)=\"sidenav.toggle()\"></app-toolbar>\n    <div class=\"wrapper\">\n      <router-outlet></router-outlet>\n    </div>\n\n  </div>\n</mat-sidenav-container>"
+module.exports = "<mat-sidenav-container class=\"app-sidenav-container\">\n  <mat-sidenav #sidenav class=\"app-sidenav mat-elevation-z2\" [opened]=\"false\" [mode]=\"isScreenSmall()? 'over':'side'\">\n    <mat-toolbar>\n      Menu\n    </mat-toolbar>\n    <mat-nav-list>\n      <mat-list-item>\n        <mat-icon>calendar_view_day</mat-icon>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'year']\">Year</a>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'month']\">\n          Month\n        </a>\n      </mat-list-item>\n      <mat-list-item>\n          <a mat-line [routerLink]=\"['/calendar', 'leaveTableView']\">View All</a>\n      </mat-list-item>\n      <mat-list-item>\n        <mat-icon>event</mat-icon>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'addevent']\">Add Event</a>\n      </mat-list-item>\n      <mat-list-item>\n        <a mat-line [routerLink]=\"['/calendar', 'applyleave']\">Apply Leave</a>\n      </mat-list-item>\n    </mat-nav-list>\n  </mat-sidenav>\n  <div class=\"app-sidenav-content\">\n    <app-toolbar (toggleSidenav)=\"sidenav.toggle()\"></app-toolbar>\n    <div class=\"wrapper\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</mat-sidenav-container>"
 
 /***/ }),
 
@@ -141,6 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _main_content_components_apply_leave_apply_leave_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../main-content/components/apply-leave/apply-leave.component */ "./src/app/calendar/components/main-content/components/apply-leave/apply-leave.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -153,11 +159,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var SMALL_WIDTH_BREAKPOINT = 720;
+
+var SMALL_WIDTH_BREAKPOINT = 2000;
 var SideNavComponent = /** @class */ (function () {
-    function SideNavComponent(zone, router) {
+    function SideNavComponent(zone, router, matDialog) {
         var _this = this;
         this.router = router;
+        this.matDialog = matDialog;
         this.mediaMatcher = matchMedia("(max-width: " + SMALL_WIDTH_BREAKPOINT + "px)");
         this.mediaMatcher.addListener(function (mql) {
             zone.run(function () { return _this.mediaMatcher = mql; });
@@ -170,6 +178,9 @@ var SideNavComponent = /** @class */ (function () {
                 _this.sidenav.close();
             }
         });
+    };
+    SideNavComponent.prototype.applyForm = function () {
+        this.matDialog.open(_main_content_components_apply_leave_apply_leave_component__WEBPACK_IMPORTED_MODULE_3__["ApplyLeaveComponent"], {});
     };
     SideNavComponent.prototype.isScreenSmall = function () {
         return this.mediaMatcher.matches;
@@ -184,7 +195,9 @@ var SideNavComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./side-nav.component.html */ "./src/app/calendar/components/side-nav/side-nav.component.html"),
             styles: [__webpack_require__(/*! ./side-nav.component.css */ "./src/app/calendar/components/side-nav/side-nav.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
     ], SideNavComponent);
     return SideNavComponent;
 }());
@@ -200,7 +213,7 @@ var SideNavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n  <button mat-button class=\"sidenav-toggle\" (click)=\"toggleSidenav.emit()\">\n    <mat-icon>menu</mat-icon>\n  </button>\n  \n  <span class=\"font-custom\">Calendar</span>\n  <!-- <span class=\"example-spacer\"></span>\n  <button mat-button [matMenuTriggerFor]=\"menu\">\n      <mat-icon >more_vert</mat-icon>\n  </button>\n<mat-menu #menu=\"matMenu\">\n  <button mat-menu-item >New Contact</button>\n</mat-menu> -->\n</mat-toolbar>"
+module.exports = "<mat-toolbar color=\"primary\" style=\"background-color:lightseagreen;\">\n  <button mat-button class=\"sidenav-toggle\" (click)=\"toggleSidenav.emit()\">\n    <mat-icon>menu</mat-icon>\n  </button>\n</mat-toolbar>"
 
 /***/ }),
 
@@ -211,7 +224,7 @@ module.exports = "<mat-toolbar color=\"primary\">\n  <button mat-button class=\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".sidenav-toggle {\n  display: none;\n  padding: 0;\n  margin: 0;\n  min-width: 56px; }\n  @media (max-width: 720px) {\n    .sidenav-toggle {\n      display: flex;\n      align-items: center;\n      justify-content: center; } }\n  .sidenav-toggle mat-icon {\n    font-size: 30px;\n    height: 56px;\n    width: 56px;\n    line-height: 56px;\n    color: white; }\n  .example-spacer {\n  flex: 1 1 auto; }\n  .font-custom {\n  font-weight: 400;\n  font-size: 24px;\n  line-height: 32px; }\n"
+module.exports = ".sidenav-toggle {\n  padding: 0;\n  margin: 0;\n  min-width: 56px; }\n  .sidenav-toggle mat-icon {\n    font-size: 30px;\n    height: 56px;\n    width: 56px;\n    line-height: 56px;\n    color: white; }\n  .example-spacer {\n  flex: 1 1 auto; }\n"
 
 /***/ }),
 

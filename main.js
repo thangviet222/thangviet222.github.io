@@ -10,10 +10,12 @@
 var map = {
 	"./calendar/calendar.module": [
 		"./src/app/calendar/calendar.module.ts",
+		"common",
 		"calendar-calendar-module"
 	],
 	"./components/main-content/main-content.module": [
 		"./src/app/calendar/components/main-content/main-content.module.ts",
+		"common",
 		"components-main-content-main-content-module"
 	]
 };
@@ -26,7 +28,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var module = __webpack_require__(ids[0]);
 		return module;
 	});
@@ -141,7 +143,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -151,7 +153,7 @@ var AppModule = /** @class */ (function () {
                 _shared_material_module__WEBPACK_IMPORTED_MODULE_4__["MaterialModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]],
         })
     ], AppModule);
     return AppModule;
@@ -174,12 +176,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -219,7 +223,9 @@ var MaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSortModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatRadioModule"]
             ],
             exports: [
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCheckboxModule"],
@@ -251,9 +257,14 @@ var MaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSnackBarModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSortModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatRadioModule"]
             ],
-            declarations: []
+            declarations: [],
+            providers: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"]
+            ]
         })
     ], MaterialModule);
     return MaterialModule;
